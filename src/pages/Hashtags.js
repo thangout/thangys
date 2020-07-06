@@ -1,0 +1,49 @@
+
+import React, { useEffect, useState } from 'react';
+import { CSVLink } from "react-csv";
+
+
+
+
+const histNotParsed = '{"#traditionalart":1,"#rucniprace":1,"#pleteme":1,"#handmade":3,"#diy":5,"#tvorime":1,"#ugandalife":27,"#visituganda":28,"#livedifferent":23,"#travelstorycz":10,"#jecozazit":2,"#czechexplorers":71,"#cesinacestach":86,"#lideazeme":3,"#travellerlife":1,"#discoverafrica":2,"#dnescestujem":68,"#dnesletim":62,"#loudavymkrokem":9,"#nacestach":70,"#cestovani":82,"#cestujeme":2,"#cestujemeposvete":1,"#zahorizonty":14,"#cestolidi":84,"#ikoktejlcz":24,"#magazinocestovani":30,"#fotkyplnekysliku":39,"#vandr_woman":83,"#zezivotaucitelky":1,"#jaksizijouprincezny":1,"#zakletaprincezna":1,"#jsemprinceznavole":1,"#royalfamily":1,"#travelworlds":1,"#czechtraveler":52,"#travel":76,"#travelphotography":31,"#traveller":75,"#holkynacestach":4,"#wanderlust":80,"#nacestách":1,"#travelblog":33,"#breakfast":1,"#fitfood":1,"#foodporn":2,"#fitnessfood":1,"#local":10,"#traveling":28,"#travelworld":58,"#wanderingsoul":76,"#zapiskyzcest":45,"#czechtravelers":4,"#kdosihrajenezlobi":1,"#kdonehrajenevyhraje":1,"#boardgames":1,"#deskovehry":1,"#princeznavole":2,"#muzungunacestach":16,"#historie":1,"#backpacking":2,"#czechgirl":26,"#travelgirl":47,"#longhair":24,"#sunset":3,"#explore":56,"#wildlife":6,"#nofilter":2,"#friends":1,"#paradise":2,"#africa":27,"#nature":16,"#bloggersre":36,"#chytilajsemnapasecemotyla":1,"#butterfly":1,"#rolex":1,"#fastfood":1,"#localfood":7,"#stayhome":1,"#bohostyle":1,"#cestology":7,"#hpweneedyou":1,"#weneedmagic":1,"#fantasy":1,"#knihyprovsechny":1,"#happymothersday":1,"#streetphotography":8,"#portrait":3,"#hospodynka":1,"#cooking":1,"#banana":1,"#billionstarhotel":2,"#czechroamers":5,"#camping":2,"#hiking":15,"#travelczech":3,"#ceskakrajina":13,"#ceskarepublika":2,"#stanovani":2,"#hike":13,"#peakdesignczsknacestach":3,"#tradition":4,"#dance":4,"#sluncevdusi":1,"#staypositive":2,"#travelcouple":9,"#backpacker":20,"#exotic":1,"#flowers":1,"#czech_roamers":8,"#easter":1,"#dikykaranteno":1,"#veselevelikonoce":1,"#happyeaster":1,"#vandrwo":3,"#couplegoals":3,"#cocoa":1,"#chocolate":1,"#workout":1,"#sunrise":5,"#sun":3,"#morning":5,"#adventure":33,"#fotimecesko":15,"#dobrodruzi":1,"#love":3,"#winter":9,"#snow":6,"#dog":3,"#doge":1,"#shibainu":4,"#shibalovers":1,"#lensball":3,"#moon":2,"#terraformingmars":1,"#supermoon":1,"#cestujsletuskou":4,"#carnival":5,"#venice":6,"#travelblogger":42,"#streetphotohraphy":1,"#visititaly":2,"#fly":1,"#travelboy":1,"#soulmate":1,"#mask":3,"#travelgram":11,"#photooftheday":4,"#objevujsvetsletuskou":1,"#vitaninovehodne":1,"#lovevenice":2,"#ilovemaps":1,"#trip":12,"#luxurystyle":1,"#ceskyholky":4,"#valentineday":1,"#venezia":1,"#veneziastyle":1,"#urbex":1,"#czechphotography":1,"#sphere":2,"#worldisround":5,"#hill":1,"#walking":8,"#backpack":1,"#nakopci":1,"#shiba":3,"#doggie":3,"#dogstagram":1,"#psimacecha":1,"#motivacnikecy":2,"#church":1,"#dyckymost":4,"#hometown":3,"#sunnyday":2,"#places":2,"#travelwithdog":2,"#shibaaddict":1,"#pes":1,"#snih":1,"#zima":1,"#hiker":3,"#zapad":1,"#túra":2,"#befit":2,"#svetjekulatej":1,"#memories":1,"#london":1,"#lifeinuganda":11,"#travelafrica":12,"#motorcycle":1,"#motorbike":1,"#partnersincrime":1,"#dancing":3,"#ekologika":1,"#ekologie":1,"#ecology":1,"#green":1,"#greenlife":1,"#future":1,"#uganda":13,"#planet":1,"#safe":1,"#safenature":1,"#pool":1,"#friday":1,"#weekend":1,"#unicorn":2,"#selfie":1,"#instagirl":1,"#bikini":2,"#furtplnej":1,"#thebestnine2019":1,"#2019":1,"#happy":2,"#newyear":1,"#2020":1,"#christmas":6,"#silvestr":1,"#party":1,"#xmas":2,"#happychristmas":1,"#vanoce":4,"#stastneavesele":1,"#kouzlovanoc":2,"#lifeinafrica":14,"#world":4,"#travelling":9,"#wandering":11,"#blogger":4,"#charity":1,"#toys":1,"#child":2,"#streetphoto":3,"#streetlife":3,"#photography":5,"#svet":3,"#miss":1,"#beauty":1,"#girl":7,"#woman":1,"#mum":1,"#lunchtime":1,"#baby":1,"#market":1,"#christmasmarket":1,"#dresden":1,"#trhy":1,"#vanocnitrhy":1,"#drazdany":1,"#christmasstory":1,"#fairytale":1,"#svarak":1,"#vanoceprichazeji":1,"#vanocninalada":1,"#stromecek":1,"#ozdoby":1,"#christmasiscoming":2,"#cold":1,"#tea":1,"#hotwine":1,"#lights":1,"#lightening":1,"#decoration":1,"#hat":2,"#throwbackthursday":1,"#tradice":1,"#mikulas":1,"#cert":1,"#andel":1,"#mikulascertandel":1,"#zmrzlynohy":1,"#straseni":1,"#mikulasska":1,"#deti":1,"#czechrepublic":5,"#stnicholas":1,"#stnicholasday":1,"#show":1,"#costume":1,"#cosplay":1,"#czechtradition":1,"#devil":1,"#angel":1,"#sweats":1,"#children":4,"#spooky":1,"#fastandfurious":1,"#czechboy":1,"#kamnemuzesluncetammusilekar":1,"#wtf":1,"#tuesdays":1,"#monkey":1,"#animal":2,"#wildanimal":1,"#nationalpark":1,"#traveladdict":2,"#cestujemeczsk":1,"#krasopsani":1,"#handlettering":1,"#lettering":1,"#writing":1,"#goingpostal":1,"#zaslanaposta":1,"#post":1,"#snail":1,"#slowlife":1,"#slow":1,"#speed":1,"#childhood":1,"#wednesday":1,"#plazimse":1,"#snek":1,"#snecitempo":1,"#dikyzemuzem":1,"#17listopad":1,"#diky":1,"#svoboda":1,"#liberty":1,"#peace":1,"#student":2,"#studentlife":1,"#wild":5,"#exploring":9,"#energy":2,"#culture":2,"#festival":2,"#explorer":4,"#wildafrica":4,"#travelstory":9,"#travelholic":9,"#tezkyzivotnacestach":1,"#necobychzakousla":1,"#strasidlo":1,"#comavelkyzubecky":1,"#upir":1,"#vampire":1,"#teeth":1,"#lowcost":1,"#halloween":1,"#neparty":1,"#makeup":1,"#mad":1,"#afrika":1,"#pumpkin":1,"#zentangle":1,"#art":1,"#craft":1,"#traditional":1,"#handcraft":1,"#basket":1,"#muzskarymicka":1,"#nikdotoneprezil":1,"#perfectcouple":1,"#inlove":1,"#illness":1,"#flu":1,"#malaria":1,"#man":1,"#instatravel":5,"#singing":1,"#songs":1,"#common":1,"#Monday":1,"#victorialake":1,"#lake":1,"#water":2,"#boat":1,"#ship":1,"#fishing":1,"#fisherman":1,"#jezero":1,"#goat":2,"#farm":1,"#race":2,"#goatrace":2,"#kozy":1,"#zavody":1,"#event":2,"#bet":1,"#sundown":1,"#romantic":1,"#evening":1,"#sky":1,"#view":1,"#silhouette":1,"#aerialist":1,"#aerialhoop":1,"#leaf":2,"#tree":2,"#balimkufry":1,"#suitcase":1,"#model":1,"#traveblogger":1,"#iamleaving":1,"#autumn":4,"#changinglife":1,"#newlife":1,"#naceste":4,"#prekvapeni":1,"#nasetrida":1,"#mojedeti":1,"#dekuju":1,"#dojata":1,"#nesnasimlouceni":1,"#trida":1,"#zaci":1,"#skola":1,"#ucitel":1,"#ucitelka":1,"#tezkyzivotucitele":1,"#surprise":1,"#classroom":1,"#myclassroom":1,"#iloveyou":1,"#teacher":1,"#teacherslife":1,"#thankyou":1,"#remember":1,"#leaving":1,"#Most":1,"#melancholickykecy":1,"#goodmorning":1,"#wakeup":1,"#city":1,"#home":1,"#town":1,"#ontheroad":1,"#journey":1,"#nikon":1,"#vychodslunce":1,"#houbareni":1,"#houby":1,"#houbarka":1,"#les":2,"#vlese":1,"#lesycr":2,"#priroda":2,"#podzim":2,"#autumnishere":1,"#forest":2,"#mushrooms":1,"#czech":1,"#visitczechrepublic":1,"#sunny":1,"#autumniscoming":1,"#colour":1,"#coulourful":1,"#naturephotography":1,"#autumnvibes":1,"#monday":1,"#czechnature":1}'
+const histNotParsed_polreich = '{"#lexusambassador":102,"#mieleambassador":101,"#webergrillambassador":101,"#divinis":14,"#zdenekpohlreich":81,"#pohlreich":79,"#italiancuisine":6,"#michelinbibgourmand":8,"#finedining":4,"#michelin":1,"#praguetips":19,"#food":22,"#bestfood":19,"#divinisinpiazzetta":3,"#praguerestaurant":20,"#vemola":1,"#karlosvemola":1,"#terminatorvemola":1,"#birell":1,"#prazdroj":1,"#plzenskyprazdroj":14,"#zijemepivem":1,"#PohlreichRozvoz":7,"#TakeAway":7,"#liftago":11,"#jidlossebou":11,"#divinisdeallunch":5,"#cocktail":1,"#pohlreichshop":27,"#cafeimperial":20,"#nextdoorbyimperial":15,"#jidlo":13,"#obed":10,"#akademiegrosseto":2,"#kurzyvareni":4,"#steaky":1,"#delivery":9,"#nepostaradatelni":13,"#varimenepostradatelnym":15,"#delamecoumime":13,"#podportejesnami":13,"#pomahameschuti":10,"#donate":12,"#autoESA":13,"#janpuncochar":12,"#majetkovaunie":1,"#jednoducherecepty":9,"#receptynadnesnidny":7,"#TakovaNormalniKucharka":8,"#str97":1,"#opatrujtese":8,"#str41":1,"#str51":1,"#sspv":1,"#s":1,"#jidloodsefa":2,"#varjakosef":2,"#takeawayfood":8,"#topgastro":3,"#EasyLikeSundayMornig":1,"#Kulinarium":1,"#str173":1,"#str171":1,"#str29":1,"#takovanormalnikucharka":7,"#str121":1,"#receptynadnesek":1,"#str47":1,"#str27":1,"#hotovkyodsefa":1,"#kvalitazarozumnucenu":1,"#nakladatelstvisevruga":4,"#kulinarskaakademiegrosseto":2,"#skolavareni":1,"#businesslunch":9,"#czechcuisine":13,"#supersef":15,"#supersef24hodin":14,"#prima":13,"#tvprima":13,"#primaftv":13,"#savethedate":1,"#motosalon":1,"#motosalon2020":1,"#bvv":1,"#ZdendaFrajer":1,"#lexuscz":2,"#lexus":2,"#ivanvodochodsky":1,"#GastroHockeyCup":1,"#hokejprodobrouvec":2,"#live":1,"#radiobeat":1,"#lovely":4,"#gastrohockeycup2020":1,"#LexusRX":1,"#lexusforever":1,"#inlovewithlexus":1,"#foodtasting":1,"#kvalita":1,"#marekztraceny":1,"#studna":1,"#darkovepoukazy":2,"#dyckymost😂👏":1,"#showjanakrause":1,"#játrovýknedlíček":1,"#inspirace":1,"#diky":1,"#Zdenci":1,"#dyckymost❤️":1,"#nautico":1,"#kolin":1,"#hasicikolin":1,"#jezisekzlafabriky":1,"#klubsvobodnychmatek":1,"#lafabrika":1,"#ahrcr":1,"#bistro":2,"#knihkupectviluxor":1,"#sevruga":1,"#vajecnyliker":1,"#vajecnykonak":1,"#vanoce":1}'
+
+
+const Hashtags = () => {
+
+
+    const [hashtags, setHashtags] = useState([]);
+
+    useEffect(()=>{
+        const parsedHist = JSON.parse(histNotParsed_polreich)
+
+        Object.entries(parsedHist).map((key, value) => {
+            hashtags.push({"hashtag": key[0], "count": key[1]});
+        })
+        
+
+        console.log("gasd")
+        console.log(hashtags)
+        setHashtags(hashtags)
+
+    })
+
+    const headers = [
+    { label: "Weight", key: "count" },
+    { label: "Word", key: "hashtag" },
+    ];
+
+
+    return (
+        <div>
+            <h2>Parsed</h2>
+                <CSVLink data={hashtags} headers={headers}>
+                    Download parsed histogram
+                </CSVLink>;
+
+        </div>
+
+    )
+}
+
+export default Hashtags;
